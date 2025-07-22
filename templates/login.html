@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Login - SimpleAuth{% endblock %}
+
+{% block content %}
+<form class="auth-form" method="post" action="/login">
+    <h1>Login</h1>
+    
+    {% if error %}
+        <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+    
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    
+    <button type="submit" class="btn">Login</button>
+    <div class="links">
+        <a href="/reset-password">Forgot password?</a>
+    </div>
+    <hr style="margin:2em 0;">
+    <button type="button" class="btn" style="background:#fff; color:#333; border:1px solid #ccc; margin-bottom:0.5em; font-weight: bold;" onclick="window.location.href='/login/google'">
+        <img src="../static/logos/google-icon-2025-logo-brandlogos.net_39k3z7gek.svg" alt="Google" style="height: 1.5em; vertical-align:middle; margin-right:0.5em;"> Sign in with Google
+    </button>
+    <button type="button" class="btn" style="background:#fff; color:#24292f; border:1px solid #ccc; font-weight: bold;" onclick="window.location.href='/login/github'">
+        <img src="../static/logos/github.svg" alt="GitHub" style="height:1.5em; vertical-align:middle; margin-right:0.5em;"> Sign in with GitHub
+    </button>
+</form>
+{% endblock %}

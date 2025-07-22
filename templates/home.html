@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Home - SimpleAuth{% endblock %}
+
+{% block content %}
+<div class="welcome-card">
+    {% if user %}
+        <h1>Welcome back, {{ user.full_name }}!</h1>
+        <p>You are logged in. Access your dashboard or manage your profile.</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>📊 Dashboard</h3>
+                <p>View your account overview</p>
+                <div style="margin-top: 1rem;">
+                    <a href="/dashboard" class="btn" style="display: inline-block; text-decoration: none;">Go to Dashboard</a>
+                </div>
+            </div>
+            <div class="feature-card">
+                <h3>👤 Profile</h3>
+                <p>Manage your personal information</p>
+                <div style="margin-top: 1rem;">
+                    <a href="/profile" class="btn" style="display: inline-block; text-decoration: none;">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <h1>Welcome to SimpleAuth</h1>
+        <p>A clean and simple authentication system built with FastAPI and HTML</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🔒 Secure</h3>
+                <p>JWT tokens with bcrypt password hashing</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Fast</h3>
+                <p>Built with FastAPI for optimal performance</p>
+            </div>
+            <div class="feature-card">
+                <h3>🎨 Simple</h3>
+                <p>Clean HTML interface, no complex frameworks</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 2rem;">
+            <a href="/register" class="btn" style="display: inline-block; text-decoration: none; max-width: 200px;">Get Started</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

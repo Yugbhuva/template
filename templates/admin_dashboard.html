@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="welcome-card">
+    <h1>Welcome, Admin {{ user.full_name }}</h1>
+    <p style="margin-bottom: 1.5rem; color: #666;">This is the admin dashboard. Manage users below.</p>
+    <a href="/admin/add-user" class="btn" style="margin-bottom: 1.5em; display: inline-block; max-width: 200px;">Add New User</a>
+    <h2 style="margin-top: 2em;">All Users</h2>
+    <div style="overflow-x:auto;">
+        <table class="user-table" style="width:100%; border-collapse:collapse; margin-top:1em;">
+            <thead>
+                <tr style="background:#f8f9fa;">
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Admin?</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in users %}
+                <tr>
+                    <td>{{ u.id }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ u.full_name }}</td>
+                    <td>{% if u.is_admin %}Yes{% else %}No{% endif %}</td>
+                    <td style="white-space:nowrap;">
+                        <a href="/admin/edit-user?user_id={{ u.id }}" class="btn" style="display:inline-block; width:auto; padding:10px; font-size:15px;">Edit</a>
+                        <form method="post" action="/admin/delete-user" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this user? This action cannot be undone.');">
+                            <input type="hidden" name="user_id" value="{{ u.id }}">
+                            <button type="submit" class="btn btn-danger" style="width:auto; padding:10px; font-size:15px;" {% if u.id == user.id %}disabled title="You cannot delete yourself"{% endif %}>Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %} 

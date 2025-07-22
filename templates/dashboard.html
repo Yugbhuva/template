@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - SimpleAuth{% endblock %}
+
+{% block content %}
+<div class="welcome-card">
+    <h1>Welcome back, {{ user.full_name }}!</h1>
+    <p>You are successfully logged in to your account.</p>
+    <p style="color: #888; font-size: 0.9rem;">Member since: {{ user.created_at.strftime('%B %d, %Y') }}</p>
+    
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>👤 Profile</h3>
+            <p>Manage your personal information</p>
+            <div style="margin-top: 1rem;">
+                <a href="/profile" class="btn" style="display: inline-block; text-decoration: none;">Edit Profile</a>
+            </div>
+        </div>
+        <div class="feature-card">
+            <h3>📧 Email</h3>
+            <p>{{ user.email }}</p>
+            <div style="margin-top: 1rem;">
+                <span style="color: #28a745;">✓ Verified</span>
+            </div>
+        </div>
+        <div class="feature-card">
+            <h3>🔒 Security</h3>
+            <p>Your account is secure with JWT tokens</p>
+            <div style="margin-top: 1rem;">
+                <a href="/logout" class="btn" style="display: inline-block; text-decoration: none; background: #dc3545;">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

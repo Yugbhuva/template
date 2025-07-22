@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+jinja2
+python-multipart
+sqlalchemy
+passlib
+pyjwt
+python-dotenv
+authlib

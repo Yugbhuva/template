@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Reset Password - SimpleAuth{% endblock %}
+
+{% block content %}
+<form class="auth-form" method="post" action="/reset-confirm">
+    <h1>Set New Password</h1>
+    
+    {% if error %}
+        <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+    
+    {% if success %}
+        <div class="alert alert-success">{{ success }}</div>
+    {% endif %}
+    
+    <input type="hidden" name="token" value="{{ token }}">
+    
+    <div class="form-group">
+        <label for="new_password">New Password</label>
+        <input type="password" id="new_password" name="new_password" required>
+    </div>
+    
+    <button type="submit" class="btn">Reset Password</button>
+    
+    <div class="links">
+        <a href="/login">Back to Login</a>
+    </div>
+</form>
+{% endblock %}  
