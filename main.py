@@ -360,7 +360,7 @@ async def reset_password(
             await db_interface.update_user(email, user_data)
         
         # Send reset email
-        reset_url = f"http://localhost:8000/reset-confirm?token={reset_token}"
+        reset_url = f"{FRONTEND_URL}/reset-confirm?token={reset_token}"
         email_body = f"""
         Hello {user.full_name},
         
