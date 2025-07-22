@@ -7,3 +7,4 @@ passlib
 pyjwt
 python-dotenv
 authlib
+httpx
