@@ -24,6 +24,7 @@ from models import User, Base
 
 # Load environment variables
 load_dotenv()
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:8000")
 
 # App configuration
 app = FastAPI(title="Simple Auth System")
