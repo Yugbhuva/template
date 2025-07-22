@@ -581,7 +581,3 @@ async def admin_add_user(request: Request, full_name: str = Form(...), email: st
         }
         await db_interface.create_user(user_data)
     return RedirectResponse(url="/admin", status_code=302)
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
