@@ -24,7 +24,7 @@ from models import User, Base
 
 # Load environment variables
 load_dotenv()
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:8000")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://template-dhcd.onrender.com")
 
 # App configuration
 app = FastAPI(title="Simple Auth System")
